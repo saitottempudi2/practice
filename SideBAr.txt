@@ -136,3 +136,35 @@ body.dark-theme {
   background-color: #121212;
   color: white;
 }
+import React, { useState } from 'react';
+import Sidebar from './components/SideBar';
+
+
+const App = () => {
+  const [darkTheme, setDarkTheme] = useState(false);
+
+  const menuItems = [
+    { label: 'Dashboard', iconClass: 'dashboard-icon' },
+    { label: 'Reports', iconClass: 'reports-icon' },
+    { label: 'SIM Administration', iconClass: 'sim-icon' },
+  ];
+
+  const handleThemeToggle = () => {
+    setDarkTheme(!darkTheme);
+    // Apply theme logic here, e.g., toggling a CSS class or context
+  };
+
+  return (
+    <div className={darkTheme ? 'dark-theme' : ''}>
+      <Sidebar
+        logo={<span style={{ color: '#ff5722' }}>V</span>}
+        menuItems={menuItems}
+        darkThemeEnabled={true}
+        onThemeToggle={handleThemeToggle}
+      />
+ 
+    </div>
+  );
+};
+
+export default App;
